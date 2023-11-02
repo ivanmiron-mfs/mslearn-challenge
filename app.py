@@ -1,14 +1,37 @@
-#-----------------------------------------------------------------------------------------
-# Copyright (c) Microsoft Corporation. All rights reserved.
-# Licensed under the MIT License. See LICENSE in the project root for license information.
-#-----------------------------------------------------------------------------------------
+import random
 
-from flask import Flask
-app = Flask(__name__)
+options = ('piedra','papel','tijera') 
 
-@app.route("/")
-def hello():
-    return app.send_static_file("index.html")
+user = input( 'piedra, papel, tijera ')
+user = user.lower()
+computer = random.choice(options)
 
-# write 'hello world' to the console
-print('hello world')
+if not user in options:
+  print('opcion invalida')
+  
+print('user = >',user)
+print('computer => ',computer)
+
+if user == computer:
+  print('empate !')
+elif user == 'piedra':
+  if computer == 'tijera':
+    print('piedra gana a tijera')
+    print('user win')
+  else:
+    print('papel gana a  piedra ')
+    print( 'computer win ')
+elif user == 'papel':
+  if computer == 'piedra':
+    print('papel gana a piedra')
+    print('user win')
+  else:
+    print('tijera gana a  papel ')
+    print( 'computer win ')
+elif user == 'tijera':
+  if computer == 'papel':
+    print('tijera gana a papel')
+    print('user win')
+  else:
+    print('piedra gana a tijera ')
+    print( 'computer win ')
